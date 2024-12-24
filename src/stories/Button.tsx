@@ -27,3 +27,4 @@ export const Button: React.FC<ButtonProps> = ({ label, mytype, ...rest }) => {
     </MuiButton>
   );
 };
+export default Button;

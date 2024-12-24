@@ -26,3 +26,5 @@ export const Dropdown = ({ label, children, ...rest }: SelectProps) => {
 
 // Set default properties
 Dropdown.defaultProps = {};
+
+export default Dropdown;
