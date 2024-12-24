@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "module": "ES6",
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "useDefineForClassFields": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
