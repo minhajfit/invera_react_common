@@ -12,7 +12,7 @@ function App() {
           <Typography variant="h4" component="h1" gutterBottom>
             Hellow World
           </Typography>
-          <Button label="Hello World" />
+          <Button label="Hello World" mytype="header"/>
         </Box>
       </Container>
     </>

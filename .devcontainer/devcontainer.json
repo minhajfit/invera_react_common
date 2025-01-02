@@ -16,7 +16,7 @@
   // "remoteUser": "root"
   "runArgs": [
     "--name",
-    "mui-customisation"
+    "invera_react_common"
   ],
   "customizations": {
     "vscode": {

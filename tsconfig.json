@@ -16,7 +16,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "emitDeclarationOnly": true
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
