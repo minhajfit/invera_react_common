@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions"; // Use this for click handlers in Storybook
-import { Button } from "./Button";
+import { Button } from "../components/Button";
 
 // Default export for story metadata
 const meta: Meta<typeof Button> = {
