@@ -3,13 +3,11 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-
   resolve: {
     alias: {
-      'invera_react_common': '../invera_react_common/dist',  // Point to your built package output
+      'invera_react_common': '../invera_react_common/dist', // Point to your built package output
     },
   },
-
   build: {
     lib: {
       entry: './src/index.tsx', // Main entry point

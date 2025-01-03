@@ -1,0 +1,7 @@
+src/
+.storybook/
+node_modules/
+tests/
+.vscode/
+*.log
+*.lock

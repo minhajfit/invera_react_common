@@ -17,7 +17,7 @@ export const Dropdown = ({ label, children, ...rest }: SelectProps) => {
       label={label}
       {...rest}
       sx={{ minWidth: 150 }}
-      style={{ backgroundColor: "yellow" }}
+      style={{ backgroundColor: "white" }}
     >
       {children}
     </MuiSelect>
