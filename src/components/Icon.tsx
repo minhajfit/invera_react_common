@@ -1,8 +1,8 @@
 import React from "react";
-import { FaHome, FaArrowRight , FaReact} from "react-icons/fa";
+import * as Icons from "./fonticon"; // Import all icons from fonticon.tsx as a single object
 
 interface IconProps {
-  iconType: "Home" | "Go" | "LOGO" |string; // Extend this to include other icon types
+  iconType: string; // Dynamically map any icon type from fonticon.tsx
   color?: string; // Accepts any CSS color value
   size?: "small" | "medium" | "large" | number; // Predefined or custom sizes
   className?: string; // Optional for additional styling
@@ -10,30 +10,16 @@ interface IconProps {
 
 const Icon: React.FC<IconProps> = ({
   iconType,
-  color = "black", // Default color
+  color = "inherit", // Default color
   size = "medium",
   className,
 }) => {
   // Dynamically select the icon
-  let IconComponent;
+  const IconComponent = Icons[iconType as keyof typeof Icons];
 
-  switch (iconType) {
-    case "Home":
-      IconComponent = FaHome;
-      break;
-
-      case "Go":
-      IconComponent = FaArrowRight;
-      break;
-
-      case "LOGO":
-      IconComponent = FaReact;
-
-      break;
-
-    // Add more icons as needed
-    default:
-      IconComponent = FaHome; // Fallback to a default icon
+  if (!IconComponent) {
+    console.warn(`Icon "${iconType}" not found in fonticon.tsx`);
+    return null; // Return nothing if the icon is not found
   }
 
   // Define size mapping

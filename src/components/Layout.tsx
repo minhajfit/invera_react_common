@@ -27,8 +27,7 @@ export const Layout = ({
       {...rest}
       sx={{
         padding: 2,
-        border: "1px solid lightgray",
-        borderRadius: "8px",
+       
         backgroundColor: theme.palette[color].main || "#f9f9f9", // Apply color from theme or default background
         ...rest.sx, // Allow additional custom styling
       }}

@@ -1,21 +1,33 @@
-import React from "react";
-import { Grid, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Layout, Button, Label, Dropdown, Icon } from "./index";
 import MenuItem from "@mui/material/MenuItem/MenuItem";
+import { DataTable , Data, HeadCell} from "./components/DataTable";
 
+
+const header: HeadCell[] = [
+  { id: "id", label: "ID", numeric: true },
+  { id: "movieName", label: "Movie Name", numeric: false },
+  { id: "director", label: "Director", numeric: false },
+  { id: "year", label: "Year", numeric: true },
+  { id: "rating", label: "Rating", numeric: true },
+];
+
+const rows: Data[] = [
+  { id: 1, movieName: "Inception", director: "Christopher Nolan", year: 2010, rating: 9 },
+  { id: 2, movieName: "Interstellar", director: "Christopher Nolan", year: 2014, rating: 8.6 },
+  { id: 3, movieName: "The Dark Knight", director: "Christopher Nolan", year: 2008, rating: 9 },
+  { id: 4, movieName: "Memento", director: "Christopher Nolan", year: 2000, rating: 8.4 },
+];
 
 const App = () => {
   return (
-    <Layout
+    <Layout 
     direction="column"
     spacing={2}
       sx={{
-        
-     
         height: "100vh", // Full screen height
-        spacing:"3",
-       
         
+        spacing:"3",      
       }}
     >
       {/* Header Section */}
@@ -25,20 +37,48 @@ const App = () => {
           justifyContent: "space-between",
           alignItems: "center",
           backgroundColor: "primary.main",
-          padding: 2,
-          color: "#fff",
+          padding: 1,
+          
           flexShrink: 0, // Prevent resizing
         }}
       >
 
         <Icon iconType="LOGO" size="large" />
-        <Label variant="h4" component="h1" gutterBottom color="black">
+        <Label variant="h4" component="h1" gutterBottom >
           Header Title
         </Label >
 
         <Button actionType="Header" >
+
+    
         <Icon iconType="Home" size="medium" />
         </Button>
+      </Layout>
+
+      {/* Second action Area */}
+      <Layout
+        direction="row"
+        spacing={2}
+        sx={{
+          alignItems: "center",
+          padding: 1,     
+          backgroundColor: "secondary.main",
+          flexShrink: 0, // Prevent resizing
+        }}
+      >
+      
+        <Button actionType="Toggle1" sx={{
+          width:"150px"
+        }} >
+        Toggle1
+        </Button>
+
+        <Button actionType="Toggle1" sx={{
+          width:"150px"
+        }} >
+        Toggle2
+        </Button>
+        
       </Layout>
 
       {/* Filter Area */}
@@ -47,10 +87,8 @@ const App = () => {
         spacing={2}
         sx={{
           alignItems: "center",
-          padding: 2,
-          border: "1px solid lightgray",
-          borderRadius: "8px",
-          backgroundColor: "#f9f9f9",
+          padding: 2,     
+          backgroundColor: "primary.light",
           flexShrink: 0, // Prevent resizing
         }}
       >
@@ -80,20 +118,24 @@ const App = () => {
         sx={{
           flex: 1, // Take up remaining space
           padding: 2,
+         
+          backgroundColor:"primary.light"
         }}
       >
         {/* Grid Action Bar */}
         <Layout
           direction="row"
+          width={"100%"}
           spacing={2}
           sx={{
             justifyContent: "flex-end",
-            padding: 2,
-            border: "1px solid lightgray",
-            borderRadius: "8px",
+            padding: 1,
+           
             marginBottom: 2,
           }}
         >
+
+
           <Button actionType="GridAction" startIcon={<Icon iconType="Add" />}>
             Add
           </Button>
@@ -102,24 +144,27 @@ const App = () => {
           </Button>
         </Layout>
 
-        {/* Grid Content */}
+        <DataTable rows={rows} header={header} zebraStriped />
+
+        {/* Grid Content  */}
         <Grid container spacing={2}>
           {[...Array(12)].map((_, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid item xs={12} sm={6} md={2} key={index}>
               <Layout
                 sx={{
-                  border: "1px solid lightgray",
-                  borderRadius: "8px",
+               backgroundColor:"white" ,
                   padding: 2,
                   textAlign: "center",
+                  width:"200px"
                 }}
               >
-                <h3>Card {index + 1}</h3>
-                <p>Some content here...</p>
+               
+               
               </Layout>
             </Grid>
           ))}
-        </Grid>
+        </Grid> 
+      
       </Layout>
     </Layout>
   );

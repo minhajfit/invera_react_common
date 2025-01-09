@@ -5,13 +5,13 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#D2E0E8",  // Main color
-      light: "#D2E0E8",  // Light color
-      dark: "#D2E0E8",   // Dark color
+      light: "#FFFFFF",  // Light color
+      dark: "#5B7A8F",   // Dark color
       contrastText: "#000000",  // Text color on the primary button
     },
     secondary: {
       main: "#5B7A8F",  // Main color
-      light: "#5B7A8F",  // Light color
+      light: "#FFFFFF",  // Light color
       dark: "#5B7A8F",   // Dark color
       contrastText: "#FFFFFF",  // Text color on the secondary button
     },
@@ -33,6 +33,7 @@ const theme = createTheme({
       dark: blue[700],   // Dark info color
       contrastText: "#FFFFFF",  // Text color on the info button
     },
+ 
     // You can add more colors or adjust other palette properties as needed
   },
 });
