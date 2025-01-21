@@ -1,17 +1,19 @@
 import React from "react";
 import { Stack, Button, Typography } from "@mui/material";
+import {Home, Info, Back, LOGO} from "./FontIcon"
+
 
 interface ActionBarProps {
   id: string;
-  type: "ButtonBar" | "ApplicationHeader" | "WindowButtonBar" | "AdvancedActionBar" | "CustomHeaderContainer";
+  type: string;// "ButtonBar" | "ApplicationHeader" | "WindowButtonBar" | "AdvancedActionBar" | "CustomHeaderContainer";
   notes?: string;
   title?: string;
-  logoutState?: "Logout" | "Close" | "None";
-  closeButton?: "None" | "Back" | "Close";
-  showApplicationAccessMode?: "None" | "Inquiry" | "InquiryAddDuplicate";
-  gridNavigationButtons?: "None" | "All" | "RefreshOnly" | "RefreshAndNext" | "PreviousAndNext" | "PreviousNextDetail";
-  align?: "Left" | "Right" | "Center";
-  actionBarType?: "NA" | "Primary" | "Secondary" | "SecondaryRounded";
+  logoutState?: string;// "Logout" | "Close" | "None";
+  closeButton?: string;// "None" | "Back" | "Close";
+  showApplicationAccessMode?: string;// "None" | "Inquiry" | "InquiryAddDuplicate";
+  gridNavigationButtons?: string;// "None" | "All" | "RefreshOnly" | "RefreshAndNext" | "PreviousAndNext" | "PreviousNextDetail";
+  align?:string;//  "Left" | "Right" | "Center";
+  actionBarType?: string;// "NA" | "Primary" | "Secondary" | "SecondaryRounded";
   showCenterLogo?: boolean;
   logoImageSource?: string;
   logoImageHeight?: string;
@@ -25,41 +27,41 @@ interface ActionBarProps {
   backButtonStyle?: string;
   backButtonHeight?: string;
   backButtonWidth?: string;
-  backButtonType?: "ImageButton" | "Button";
+  backButtonType?: string;// "ImageButton" | "Button";
   closeButtonImage?: string;
   closeButtonStyle?: string;
   closeButtonHeight?: string;
   closeButtonWidth?: string;
-  closeButtonType?: "ImageButton" | "Button";
+  closeButtonType?: string;// "ImageButton" | "Button";
   showHomeButton?: boolean;
   homeButtonImage?: string;
   homeButtonStyle?: string;
   homeButtonHeight?: string;
   homeButtonWidth?: string;
-  homeButtonType?: "ImageButton" | "Button";
+  homeButtonType?: string;// "ImageButton" | "Button";
   showInfoButton?: boolean;
   infoButtonImage?: string;
   infoButtonStyle?: string;
   infoButtonHeight?: string;
   infoButtonWidth?: string;
-  infoButtonType?: "ImageButton" | "Button";
+  infoButtonType?: string;// "ImageButton" | "Button";
   showExpandButton?: boolean;
   expandButtonImage?: string;
   expandButtonStyle?: string;
-  expandButtonType?: "ImageButton" | "Button";
+  expandButtonType?:string;//  "ImageButton" | "Button";
   showAdditionalFiltersButton?: boolean;
   additionalFiltersButtonImage?: string;
   additionalFiltersButtonStyle?: string;
-  additionalFiltersButtonType?: "ImageButton" | "Button";
+  additionalFiltersButtonType?: string;// "ImageButton" | "Button";
   showSortButton?: boolean;
   sortButtonImage?: string;
   sortButtonStyle?: string;
   sortMenuOptions?: string;
-  sortButtonType?: "ImageButton" | "Button";
+  sortButtonType?: string;// "ImageButton" | "Button";
   showSettingsButton?: boolean;
   settingsButtonImage?: string;
   settingsButtonStyle?: string;
-  settingsButtonType?: "ImageButton" | "Button";
+  settingsButtonType?:string;//  "ImageButton" | "Button";
   showMoreButton?: boolean;
   showLoadAllButton?: boolean;
   showExportButton?: boolean;
@@ -68,7 +70,7 @@ interface ActionBarProps {
   showColumnFilterButton?: boolean;
   logoutButtonStyle?: string;
   logoutButtonImage?: string;
-  styleType?: "Default" | "DarkTeal" | "Custom";
+  styleType?:string;//  "Default" | "DarkTeal" | "Custom";
   actionBarStyle?: string;
   actionBarContentsStyle?: string;
   helpDataElementName?: string;
@@ -83,7 +85,7 @@ interface ActionBarProps {
   userTitleStyle?: string;
   navigationButtonHeight?: string;
   navigationButtonWidth?: string;
-  headerStyleType?: "None" | "WithPadding" | "WithTopBottomPadding";
+  headerStyleType?: string;// "None" | "WithPadding" | "WithTopBottomPadding";
   children?: React.ReactNode;
 }
 
@@ -112,29 +114,29 @@ const ActionBar: React.FC<ActionBarProps> = ({
     return null; // Render nothing if the action bar can be hidden
   }
 
-   // Set direction based on type1
-   const justifyContent = align === "Left" 
-   ? "flex-start" 
-   : align === "Center" 
-     ? "center" 
-     : "flex-end"; // Default or other cases
- 
- const alignItems = align === "Left" 
-   ? "flex-start" 
-   : align === "Center" 
-     ? "center" 
-     : "flex-end"; // Default or other cases
+  const justifyContent =
+    align === "Left"
+      ? "flex-start"
+      : align === "Center"
+      ? "center"
+      : "flex-end";
 
-     
+  const alignItems =
+    align === "Left"
+      ? "flex-start"
+      : align === "Center"
+      ? "center"
+      : "flex-end";
+
   return (
     <Stack
       id={id}
       sx={{
         display: "flex",
-        width:'100%',
+        flexDirection: "row", // Ensures buttons are displayed side by side
+        width: "100%",
         justifyContent: justifyContent,
-        alignItems : alignItems,
-        border:'1px solid green',
+        alignItems: alignItems,
         padding: "10px",
         background: actionBarStyle || "inherit",
       }}
@@ -142,6 +144,24 @@ const ActionBar: React.FC<ActionBarProps> = ({
       data-notes={notes}
       {...rest}
     >
+     
+     
+     {showBackButton && (
+        <Button 
+
+          
+          style={{
+            backgroundImage: `url(${backButtonImage})`,
+            height: rest.backButtonHeight,
+            width: rest.backButtonWidth,
+          }}  
+
+          startIcon={<Back/>}
+        >
+          Back
+        </Button>
+      )}
+
       {showLeftLogo && leftLogoImageSource && (
         <img
           src={leftLogoImageSource}
@@ -158,48 +178,48 @@ const ActionBar: React.FC<ActionBarProps> = ({
         />
       )}
 
-      {(title && title != 'XXX-XXX') && (
-        <Typography variant="h6" style={{ flex: 1 }}>
+      {title && title !== "XXX-XXX" && (
+        <Typography variant="h5" style={{ flex: 1 }}  sx={{
+          display: "flex",
+          flexDirection: "row", // Ensures buttons are displayed side by side
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "10px",
+          background: actionBarStyle || "inherit",
+        }}  >
+
+{<LOGO/>}
           {title}
         </Typography>
       )}
 
+
       {children}
 
-      {showBackButton && backButtonImage && (
-        <Button
-          style={{
-            backgroundImage: `url(${backButtonImage})`,
-            height: rest.backButtonHeight,
-            width: rest.backButtonWidth,
-            
-          }}
-        >
-          Back
-        </Button>
-      )}
-
+ 
       {showHomeButton && homeButtonImage && (
         <Button
           style={{
             backgroundImage: `url(${homeButtonImage})`,
             height: rest.homeButtonHeight,
             width: rest.homeButtonWidth,
-            
           }}
         >
           Home
         </Button>
       )}
 
-      {showInfoButton && infoButtonImage && (
+      {showInfoButton && (
         <Button
           style={{
             backgroundImage: `url(${infoButtonImage})`,
             height: rest.infoButtonHeight,
             width: rest.infoButtonWidth,
-            
           }}
+          
+          variant="outlined"
+          startIcon={<Info/>}
         >
           Info
         </Button>

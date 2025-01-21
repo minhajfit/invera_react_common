@@ -17,7 +17,7 @@ interface FormProps {
   autoHeight?: boolean;
   visible?: boolean;
   autoFocus?: boolean;
-  captionType?: "LongLabel" | "ShortLabel" | "ColumnHeading";
+  captionType?: string;// "LongLabel" | "ShortLabel" | "ColumnHeading";
   itemChanged?: boolean;
   defaultColumnWidthFlag?: boolean;
   addExtraProperties?: boolean;

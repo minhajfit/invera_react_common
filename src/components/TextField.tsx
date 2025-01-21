@@ -3,16 +3,16 @@ import { TextField as MuiTextField, TextFieldProps as MuiTextFieldProps, InputAd
 
 // Define all additional properties based on the Input schema
 type CustomTextFieldProps = Omit<MuiTextFieldProps, 'variant'> & {
-  variant?: "filled" | "standard" | "outlined"; // Explicitly allow variant as filled, standard, or outlined
+  variant?:  "filled" | "standard" | "outlined"; // Explicitly allow variant as filled, standard, or outlined
   showPasswordToggle?: boolean; // Password visibility toggle
-  characterCasing?: "Upper" | "Lower" | "None"; // Character casing transformation
+  characterCasing?: string;// "Upper" | "Lower" | "None"; // Character casing transformation
   customStyle?: React.CSSProperties; // Optional custom style
   id: string; // Required ID attribute
   title?: string; // Title attribute for the input
   width?: string; // Optional width for the input
   visible?: boolean; // Visibility flag
   enabled?: boolean; // Enabled flag
-  captionType?: "LongLabel" | "ShortLabel" | "ColumnHeading"; // Caption type
+  captionType?: string;// "LongLabel" | "ShortLabel" | "ColumnHeading"; // Caption type
   showTitle?: boolean; // Flag to show title
   wrapTitle?: boolean; // Flag to wrap title
   addExtraProperties?: boolean; // Additional properties flag
@@ -24,14 +24,14 @@ type CustomTextFieldProps = Omit<MuiTextFieldProps, 'variant'> & {
   setFilterInputText?: boolean; // Flag to set filter input text
   notes?: string; // Optional notes for input
   titleStyle?: string; // Custom title style
-  type: "Text" | "TextArea" | "Numeric" | "Lookup" | "LuceneIndex" | "Email" | "InputItemEditor" | "Password" | "AldDescription"; // Type of input
+  type:string;//  "Text" | "TextArea" | "Numeric" | "Lookup" | "LuceneIndex" | "Email" | "InputItemEditor" | "Password" | "AldDescription"; // Type of input
   stringLength?: string; // Maximum string length
   helpContentId?: string; // Help content ID for the input field
   disabledStyle?: string; // Help content ID for the input field
 
   // Numeric type related properties
-  numericType?: "Integer" | "Decimal" | "Currency" | "IntegerID"; 
-  signed?: "Signed" | "PositiveOnly" | "NegativeOnly"; 
+  numericType?: string;// "Integer" | "Decimal" | "Currency" | "IntegerID"; 
+  signed?: string;// "Signed" | "PositiveOnly" | "NegativeOnly"; 
   integralDigit?: number; // Integral digit for numeric input
   maxDecimalDigits?: number; // Max decimal digits for numeric input
   minDecimalDigits?: number; // Min decimal digits for numeric input
@@ -46,7 +46,7 @@ type CustomTextFieldProps = Omit<MuiTextFieldProps, 'variant'> & {
   stopString?: string; // Stop string for lookup
   lookupFieldLength?: number; // Lookup field length
   fieldName?: string; // Field name for lookup
-  lookupInputType?: "Text" | "Numeric"; // Type for lookup input
+  lookupInputType?: string;// "Text" | "Numeric"; // Type for lookup input
   multiSelect?: boolean; // Flag for multi select
   maxSelect?: number; // Max select for lookup
   focusIn?: boolean; // Focus in flag for lookup
@@ -63,7 +63,7 @@ type CustomTextFieldProps = Omit<MuiTextFieldProps, 'variant'> & {
   // Font Icon properties
   fontIconClassName?: string; // Font icon class name
   fontIconSize?: string; // Font icon size
-  fontIconAlignment?: "Right" | "Left"; // Font icon alignment
+  fontIconAlignment?:string;//  "Right" | "Left"; // Font icon alignment
   showFontIconOnlyInTitle?: boolean; // Flag to show font icon only in title
 };
 

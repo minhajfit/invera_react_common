@@ -1,87 +1,117 @@
 import React from "react";
 import { Stack as MuiStack, StackProps as MuiStackProps } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import "../index.css"; // Import the CSS file
 
 type StackBaseProps = Omit<MuiStackProps, "direction" | "spacing">;
 
 export interface LayoutProps extends StackBaseProps {
-  direction?: "row" | "column"; // The layout direction
-  spacing?: number; // The spacing between elements
-  color?: "primary" | "secondary" | "success" | "error" | "info"; // The background color
-  children: React.ReactNode; // The children to render inside the layout
+  direction?: "row" | "column";
+  spacing?: number;
+  color?: "primary" | "secondary" | "success" | "error" | "info";
+  children: React.ReactNode;
 
-  // The new properties based on the XML schema
-  id?: string; // Unique identifier
-  styleName?: string; // Custom style name
-  title?: string; // Title of the layout
-  type1?: "Vertical" | "Horizontal" | "ComponentPlaceHolder" | "ThirdPartyContainer"; // Type of layout
-  componentType?: "None" | "SecondaryHeader" | "RibbonBar" | "RibbonGroup" | "ToggleButtonContainer"; // Component type
-  containerType?: "None" | "Default" | "Detail" | "BrowseFilter" | "PopupWindowDefault" | "WhiteWithBorder"; // Container type
-  width?: string; // Width of the layout
-  height?: string; // Height of the layout
-  showBorder?: boolean; // Whether to show border
-  backGroundColor?: string; // Background color
-  backgroundImage?: string; // Background image URL
-  align?: "Left" | "Right" | "Top" | "Bottom" | "Center"; // Alignment of content
-  padding?: number; // Padding around the layout
-  margin?: number; // Margin around the layout
-  membersMargin?: string; // Margin for members within the layout
-  captionType?: "LongLabel" | "ShortLabel" | "ColumnHeading"; // Caption type
-  isToolStrip?: boolean; // Whether it is a toolstrip
-  visible?: boolean; // Whether the layout is visible
-  showResizeBar?: boolean; // Whether to show resize bar
-  minMemberSize?: number; // Minimum member size
-  minMemberLength?: string; // Minimum member length
-  canBeHidden?: boolean; // Whether it can be hidden
-  overflow?: "Visible" | "Hidden" | "Auto" | "Scroll" | "Clip_H" | "Clip_V"; // Overflow property
+  id?: string;
+  styleName?: string;
+  title?: string;
+  type1?: string;// "Vertical" | "Horizontal" | "ComponentPlaceHolder" | "ThirdPartyContainer";
+  componentType?: string;// "None" | "SecondaryHeader" | "RibbonBar" | "RibbonGroup" | "ToggleButtonContainer";
+  containerType?:string;//  "None" | "Default" | "Detail" | "BrowseFilter" | "PopupWindowDefault" | "WhiteWithBorder";
+  width?: string;
+  height?: string;
+  showBorder?: boolean;
+  backGroundColor?: string;
+  backgroundImage?: string;
+  align?: string;// "Left" | "Right" | "Top" | "Bottom" | "Center";
+  padding?: number;
+  margin?: number;
+  membersMargin?: string;
+  captionType?:string;//  "LongLabel" | "ShortLabel" | "ColumnHeading";
+  isToolStrip?: boolean;
+  visible?: boolean;
+  showResizeBar?: boolean;
+  minMemberSize?: number;
+  minMemberLength?: string;
+  canBeHidden?: boolean;
+  overflow?:string;//  "Visible" | "Hidden" | "Auto" | "Scroll" | "Clip_H" | "Clip_V";
   autoWidth?: boolean;
   autoHeight?: boolean;
   addExtraProperties?: boolean;
 }
 
+const getStyleForName = (styleName: string | undefined, theme: any) => {
+  switch (styleName) {
+    case "ixMainLayout":
+      return {
+        backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.primary.contrastText,
+      };
+    case "ixBrowseLayout":
+      return {
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.secondary.contrastText,
+      };
+    case "ixFilterContainer":
+      return {
+        backgroundColor: theme.palette.primary.light,
+        color: theme.palette.text.primary,
+      };
+    case "titleLabelBold":
+      return {
+        backgroundColor: theme.palette.warning.light,
+        color: theme.palette.primary.dark,
+      };
+    case "ixMainHeaderLayout":
+      return {
+        backgroundColor: theme.palette.primary.light,
+        color: theme.palette.info.contrastText,
+      };
+    case "ixMainHeaderTitle":
+      return {
+        backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.primary.dark,
+      };
+    default:
+      return {
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.text.primary,
+      };
+  }
+};
+
 export const Layout = ({
-  type1 = "Vertical", // Default to "Vertical" if not provided
+  type1 = "Vertical",
   spacing = 2,
-  color = "primary", // Default color
+  color = "primary",
   align,
   styleName,
   children,
   ...rest
 }: LayoutProps) => {
-  const theme = useTheme(); // Access the theme
+  const theme = useTheme();
 
-  // Set direction based on type1
-  const direction = type1 === "Vertical" ? "column" : "row"; 
-  const justifyContent = align === "Left" 
-  ? "flex-start" 
-  : align === "Center" 
-    ? "center" 
-    : "flex-start"; // Default or other cases
+  // Get styles based on the styleName
+  const { backgroundColor, color: textColor } = getStyleForName(styleName, theme);
 
-const alignItems = align === "Left" 
-  ? "flex-start" 
-  : align === "Center" 
-    ? "center" 
-    : "flex-start"; // Default or other cases
+  // Set direction, justifyContent, and alignItems based on props
+  const direction = type1 === "Vertical" ? "column" : "row";
+  const justifyContent = align === "Left" ? "flex-start" : align === "Center" ? "center" : "flex-start";
+  const alignItems = align === "Left" ? "flex-start" : align === "Center" ? "center" : "flex-start";
 
   return (
     <MuiStack
-      direction={direction} // Set direction to "column" or "row" based on type1
+      direction={direction}
       spacing={spacing}
-      
-      {...rest} // Pass all remaining props to MuiStack
+      className={styleName}
+      {...rest}
       sx={{
-        padding: 2,
-        border:'1px solid red',
-        backgroundColor: theme.palette[color].main || "#FFFFFF", // Apply color from theme or default background
-        width: rest.width, // Apply custom width
-        height: rest.height, // Apply custom height
-        margin: rest.margin, // Apply margin
-        justifyContent: justifyContent,
-        alignItems : alignItems,
+        backgroundColor: rest.backGroundColor || backgroundColor,
+        backgroundImage: rest.backgroundImage ? `url(${rest.backgroundImage})` : undefined,
         
-        background: rest.backGroundColor || theme.palette[color].light, // Background color from props or default
-        ...rest.sx, // Allow additional custom styling
+        border: rest.showBorder ? "1px solid red" : undefined,
+        justifyContent,
+        alignItems,
+        ...rest.sx,
       }}
     >
       {children}
@@ -89,12 +119,11 @@ const alignItems = align === "Left"
   );
 };
 
-// Set default properties
+// Default properties
 Layout.defaultProps = {
-  type1: "Vertical", // Default type is "Vertical"
+  type1: "Vertical",
   spacing: 2,
- // color: "primary", // Default color
-  visible: true, // Default visibility
+  visible: true,
 };
 
 export default Layout;

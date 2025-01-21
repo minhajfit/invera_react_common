@@ -16,15 +16,15 @@ export interface LabelProps extends TypographyBaseProps {
   enabled?: boolean; // Enable/disable control
   addExtraProperties?: boolean; // Optional extra properties flag
   canBeHidden?: boolean; // Optional flag for hiding
-  captionType?: "LongLabel" | "ShortLabel" | "ColumnHeading"; // Caption type enum
+  captionType?: string;// "LongLabel" | "ShortLabel" | "ColumnHeading"; // Caption type enum
   icon?: string; // Optional icon path
-  iconType?: "Icon" | "Font"; // Icon type enum
+  iconType?: string;// "Icon" | "Font"; // Icon type enum
   showFontIconOnlyInTitle?: boolean; // Flag for font icon visibility
   fontIconClassName?: string; // Font icon class name
   fontIconSize?: string; // Font icon size
-  fontIconAlignment?: "Right" | "Left"; // Font icon alignment
+  fontIconAlignment?: string;//  "Right" | "Left"; // Font icon alignment
   color?: string; // Allows custom color
-  children: React.ReactNode; // Required children
+  children?: React.ReactNode; // Required children
 }
 
 export const Label = ({

@@ -17,9 +17,9 @@ export interface ButtonProps extends ButtonBaseProps {
   styleName?: string; // Corresponding to `styleName`
   titleStyle?: string; // Corresponding to `titleStyle`
   type1?: string; // Corresponding to `type`
-  inquiryMode?: "HideInInquiry" | "ShowInInquiry" | "ShowInquiryOnly"; // Corresponding to `inquiryMode`
-  displayState?: "Show" | "Hide"; // Corresponding to `displayState`
-  styleType?: "MenuVeryDark" | "MenuDark" | "MenuMedium" | "MenuLight" | "Default"; // Corresponding to `styleType`
+  inquiryMode?: string;// "HideInInquiry" | "ShowInInquiry" | "ShowInquiryOnly"; // Corresponding to `inquiryMode`
+  displayState?:string;//  "Show" | "Hide"; // Corresponding to `displayState`
+  styleType?: string;// "MenuVeryDark" | "MenuDark" | "MenuMedium" | "MenuLight" | "Default"; // Corresponding to `styleType`
   notes?: string; // Corresponding to `notes`
   parentMenuId?: string; // Corresponding to `parentMenuId`
   showIconsColumn?: boolean; // Corresponding to `showIconsColumn`
@@ -27,9 +27,9 @@ export interface ButtonProps extends ButtonBaseProps {
   screenDefaultButton?: boolean; // Corresponding to `screenDefaultButton`
   icon?: string; // Corresponding to `icon`
   autoWidth?: boolean; // Corresponding to `autoWidth`
-  captionType?: "LongLabel" | "ShortLabel" | "ColumnHeading"; // Corresponding to `captionType`
-  menuButtonType?: "NONE" | "SORT_MENU_BUTTON"; // Corresponding to `menuButtonType`
-  buttonType?: "Default" | "PopupWindowDefault" | "MenuButtonBig" | "MenuButton" | "OnOffButton" | "InfoButton" | "Image" | "None"; // Corresponding to `buttonType`
+  captionType?: string;// "LongLabel" | "ShortLabel" | "ColumnHeading"; // Corresponding to `captionType`
+  menuButtonType?: string;// "NONE" | "SORT_MENU_BUTTON"; // Corresponding to `menuButtonType`
+  buttonType?: string;// "Default" | "PopupWindowDefault" | "MenuButtonBig" | "MenuButton" | "OnOffButton" | "InfoButton" | "Image" | "None"; // Corresponding to `buttonType`
   showTitle?: boolean; // Corresponding to `showTitle`
   parentControl?: string; // Corresponding to `parentControl`
   imageHeight?: string; // Corresponding to `imageHeight`
@@ -38,12 +38,12 @@ export interface ButtonProps extends ButtonBaseProps {
   columnFilteringGridId?: string; // Corresponding to `columnFilteringGridId`
   addExtraProperties?: boolean; // Corresponding to `addExtraProperties`
   canBeHidden?: boolean; // Corresponding to `canBeHidden`
-  iconType?: "Icon" | "Font"; // Corresponding to `iconType`
+  iconType?: string;// "Icon" | "Font"; // Corresponding to `iconType`
   isLeftSideButton?: boolean; // Corresponding to `isLeftSideButton`
   showFontIconOnlyInTitle?: boolean; // Corresponding to `showFontIconOnlyInTitle`
   fontIconClassName?: string; // Corresponding to `fontIconClassName`
   fontIconSize?: string; // Corresponding to `fontIconSize`
-  fontIconAlignment?: "Right" | "Left"; // Corresponding to `fontIconAlignment`
+  fontIconAlignment?: string;// "Right" | "Left"; // Corresponding to `fontIconAlignment`
   //children: React.ReactNode; // Ensure the button has children
 }
 
