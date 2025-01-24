@@ -10,22 +10,18 @@ import React, { useState, useEffect } from 'react';
 import AddAccountScreenDelegate from './AddAccountScreenDelegate';
 
 /**
- * Screen Metadata:
+ * Screen Metadata: TODO
  * - Schema Version: N/A
  * - Package Name: N/A
  * - Application Title: N/A
  * - Screen ID: N/A
  */
 
-
-
 export default function AddAccountScreen({
   delegate,
 }: {
   delegate: AddAccountScreenDelegate;
 }) {
-
-
   const [vlDetailLayoutState, setvlDetailLayoutState] = useState({
     id: 'vlDetailLayout',
     align: 'Top',
@@ -134,6 +130,7 @@ export default function AddAccountScreen({
     autoHeight: true,
     width: '100%',
     height: '25',
+    padding:1,
     visible: true,
     membersMargin: '5',
     showResizeBar: false,
@@ -172,7 +169,7 @@ export default function AddAccountScreen({
     width: '100%',
     height: '58',
     visible: true,
-    numberOfColumns: '2',
+    numberOfColumns: '12',
     columnWidth: '204,0',
     autoFocus: false,
     captionType: 'ShortLabel',
@@ -192,9 +189,9 @@ export default function AddAccountScreen({
     visible: true,
     enabled: true,
     setFilterInputText: false,
-    columnSpan: '1',
+    columnSpan: '12',
     characterCasing: 'Upper',
-    stringLength: '8',
+    stringLength: '12',
     mandatory: false,
     startRow: false,
     endRow: false,
@@ -217,7 +214,7 @@ export default function AddAccountScreen({
     visible: true,
     enabled: true,
     setFilterInputText: false,
-    columnSpan: '1',
+    columnSpan: '12',
     characterCasing: 'None',
     stringLength: '15',
     mandatory: false,
@@ -265,20 +262,53 @@ export default function AddAccountScreen({
     canBeHidden: false,
   });
 
-
-     // Function to handle Save
-     const handleSave = () => {
-  
-      delegate.onSave(); // Delegate is responsible for handling the save action
+  const handle_btnCmwOk = () => {
+    delegate.handle_btnCmwOk();
   };
 
   // Expose a way for the delegate to modify the form fields
   useEffect(() => {
     // Pass to the delegate to allow it to modify the state
-   delegate.setValueCallback({
-    txtCusIdState: (state) => settxtCusIdState( state),
-    txtCusNmState: (state) => settxtCusNmState( state),
-});
+    delegate.setValueCallback({
+      vlDetailLayoutState: {
+        set: (state) => setvlDetailLayoutState(state),
+        get: () => vlDetailLayoutState,
+      },
+      chcApplicationHeaderState: {
+        set: (state) => setchcApplicationHeaderState(state),
+        get: () => chcApplicationHeaderState,
+      },
+      vl3State: { set: (state) => setvl3State(state), get: () => vl3State },
+      vlAddAccountState: {
+        set: (state) => setvlAddAccountState(state),
+        get: () => vlAddAccountState,
+      },
+      hlAddAcountTitleState: {
+        set: (state) => sethlAddAcountTitleState(state),
+        get: () => hlAddAcountTitleState,
+      },
+      lblTitleState: {
+        set: (state) => setlblTitleState(state),
+        get: () => lblTitleState,
+      },
+      df1State: { set: (state) => setdf1State(state), get: () => df1State },
+      txtCusIdState: {
+        set: (state) => settxtCusIdState(state),
+        get: () => txtCusIdState,
+      },
+      txtCusNmState: {
+        set: (state) => settxtCusNmState(state),
+        get: () => txtCusNmState,
+      },
+      wbbOkBtnBarState: {
+        set: (state) => setwbbOkBtnBarState(state),
+        get: () => wbbOkBtnBarState,
+      },
+      btnCmwOkState: {
+        set: (state) => setbtnCmwOkState(state),
+        get: () => btnCmwOkState,
+      },
+    });
   }, [delegate]);
 
   return (
@@ -412,6 +442,7 @@ export default function AddAccountScreen({
               isToolStrip={hlAddAcountTitleState.isToolStrip}
               componentType={hlAddAcountTitleState.componentType}
               canBeHidden={hlAddAcountTitleState.canBeHidden}
+              padding={hlAddAcountTitleState.padding}
             >
               <Label
                 id={lblTitleState.id}
@@ -476,6 +507,7 @@ export default function AddAccountScreen({
                 addExtraProperties={txtCusIdState.addExtraProperties}
                 disabledStyle={txtCusIdState.disabledStyle}
                 canBeHidden={txtCusIdState.canBeHidden}
+                
               ></TextField>
               <TextField
                 id={txtCusNmState.id}
@@ -513,6 +545,7 @@ export default function AddAccountScreen({
             >
               <Button
                 id={btnCmwOkState.id}
+                onClick={handle_btnCmwOk}
                 showTitle={btnCmwOkState.showTitle}
                 title={btnCmwOkState.title}
                 captionType={btnCmwOkState.captionType}
@@ -534,7 +567,6 @@ export default function AddAccountScreen({
                 type1={btnCmwOkState.type1}
                 addExtraProperties={btnCmwOkState.addExtraProperties}
                 canBeHidden={btnCmwOkState.canBeHidden}
-               onClick={handleSave}
               ></Button>
             </ActionBar>
           </Layout>

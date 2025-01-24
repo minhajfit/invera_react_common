@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, TextField as MUITextField, Typography } from "@mui/material";
+//import Grid from '@mui/material/Grid2';
 
 interface FormProps {
   id: string;
@@ -49,32 +50,31 @@ const Form: React.FC<FormProps> = ({
   children
 }) => {
 
-    const columns = parseInt(numberOfColumns, 10); // Convert numberOfColumns to an integer
+  const columns = parseInt(numberOfColumns); // Convert numberOfColumns to an integer
 
 
   return (
-    <div
-      id={id}
-      style={{
-        width,
-        height,
-        padding,
-        backgroundColor: backGroundColor,
-        border: showBorder ? "1px solid #ccc" : "none",
-        display: visible ? "block" : "none",
-      }}
-    >
     
-      <Grid container spacing={2} style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+
+      <Grid container gridColumn={columns} spacing={2} rowSpacing={2} columnSpacing={2} >
+     
         {React.Children.map(children, (child) => {
+
+          if (!React.isValidElement(child)) {
+            return null; // Skip if child is null, undefined, or not a valid React element
+          }
+
+          const columnSpan = child.props.columnSpan;
+          const xs = parseInt(columnSpan) ; 
+
           return (
-            <Grid item xs={12 / columns}>
+            <Grid item xs={xs} >
               {child}
             </Grid>
           );
         })}
       </Grid>
-    </div>
+    
   );
 };
 

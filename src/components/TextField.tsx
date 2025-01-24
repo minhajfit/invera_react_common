@@ -1,9 +1,9 @@
 import React from "react";
-import { TextField as MuiTextField, TextFieldProps as MuiTextFieldProps, InputAdornment, IconButton } from "@mui/material";
+import { Box, Typography, TextField as MuiTextField, TextFieldProps as MuiTextFieldProps, InputAdornment, IconButton } from "@mui/material";
 
 // Define all additional properties based on the Input schema
 type CustomTextFieldProps = Omit<MuiTextFieldProps, 'variant'> & {
-  variant?:  "filled" | "standard" | "outlined"; // Explicitly allow variant as filled, standard, or outlined
+  variant?: "filled" | "standard" | "outlined"; // Explicitly allow variant as filled, standard, or outlined
   showPasswordToggle?: boolean; // Password visibility toggle
   characterCasing?: string;// "Upper" | "Lower" | "None"; // Character casing transformation
   customStyle?: React.CSSProperties; // Optional custom style
@@ -24,7 +24,7 @@ type CustomTextFieldProps = Omit<MuiTextFieldProps, 'variant'> & {
   setFilterInputText?: boolean; // Flag to set filter input text
   notes?: string; // Optional notes for input
   titleStyle?: string; // Custom title style
-  type:string;//  "Text" | "TextArea" | "Numeric" | "Lookup" | "LuceneIndex" | "Email" | "InputItemEditor" | "Password" | "AldDescription"; // Type of input
+  type: string;//  "Text" | "TextArea" | "Numeric" | "Lookup" | "LuceneIndex" | "Email" | "InputItemEditor" | "Password" | "AldDescription"; // Type of input
   stringLength?: string; // Maximum string length
   helpContentId?: string; // Help content ID for the input field
   disabledStyle?: string; // Help content ID for the input field
@@ -63,7 +63,7 @@ type CustomTextFieldProps = Omit<MuiTextFieldProps, 'variant'> & {
   // Font Icon properties
   fontIconClassName?: string; // Font icon class name
   fontIconSize?: string; // Font icon size
-  fontIconAlignment?:string;//  "Right" | "Left"; // Font icon alignment
+  fontIconAlignment?: string;//  "Right" | "Left"; // Font icon alignment
   showFontIconOnlyInTitle?: boolean; // Flag to show font icon only in title
 };
 
@@ -72,7 +72,7 @@ const TextField: React.FC<CustomTextFieldProps> = ({
   customStyle,
   title,
   characterCasing = "None",
-  
+
   type = "text",
   variant = "outlined", // Default variant as "outlined"
   mandatory = false,
@@ -101,32 +101,48 @@ const TextField: React.FC<CustomTextFieldProps> = ({
   };
 
   return (
-    <MuiTextField
-      {...rest} // Spread all other props
-      variant={variant} // Pass the variant prop to TextField
-      type={showPassword ? "text" : type} // Toggle type if password field
-      onChange={handleInputChange} // Apply casing transformation
-      style={customStyle} // Apply custom styling if provided
-      label={title} 
-      inputProps={{
-        maxLength: stringLength, // Apply max length if specified
-        style: { height: height ? height : "auto" }, // Apply height if specified
-      }}
-      InputProps={{
-        endAdornment:
-          showPasswordToggle && type === "password" ? (
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleTogglePasswordVisibility}
-                edge="end"
-              >
-              </IconButton>
-            </InputAdornment>
-          ) : null,
-      }}
-      rows={numberOfRows} // Apply rows for text area
-    />
+
+    <Box display="flex" alignItems="center" gap={1}>
+
+      <Typography noWrap sx={{
+        flex: "0 0 25%", // Set width proportional to parent
+        whiteSpace: "normal",
+        overflow: "visible",        
+      }} >{title}
+      </Typography>
+
+      <MuiTextField
+        {...rest} // Spread all other props
+        variant={variant} // Pass the variant prop to TextField
+        type={showPassword ? "text" : type} // Toggle type if password field
+        onChange={handleInputChange} // Apply casing transformation
+        style={customStyle} // Apply custom styling if provided
+        label={title}
+        //  placeholder="Enter value"
+        InputLabelProps={{ shrink: true }} // Prevents the floating label from being inline
+
+        inputProps={{
+          maxLength: stringLength, // Apply max length if specified
+          style: { height: height ? height : "auto" }, // Apply height if specified
+        }}
+        InputProps={{
+          endAdornment:
+            showPasswordToggle && type === "password" ? (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleTogglePasswordVisibility}
+                  edge="end"
+                >
+                </IconButton>
+              </InputAdornment>
+            ) : null,
+        }}
+        rows={numberOfRows} // Apply rows for text area
+      />
+    </Box >
+
+
   );
 };
 

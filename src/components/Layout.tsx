@@ -86,6 +86,7 @@ export const Layout = ({
   align,
   styleName,
   children,
+  padding,
   ...rest
 }: LayoutProps) => {
   const theme = useTheme();
@@ -97,7 +98,7 @@ export const Layout = ({
   const direction = type1 === "Vertical" ? "column" : "row";
   const justifyContent = align === "Left" ? "flex-start" : align === "Center" ? "center" : "flex-start";
   const alignItems = align === "Left" ? "flex-start" : align === "Center" ? "center" : "flex-start";
-
+  const pad = padding;
   return (
     <MuiStack
       direction={direction}
@@ -111,6 +112,7 @@ export const Layout = ({
         border: rest.showBorder ? "1px solid red" : undefined,
         justifyContent,
         alignItems,
+        padding:pad,
         ...rest.sx,
       }}
     >

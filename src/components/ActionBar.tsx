@@ -135,6 +135,8 @@ const ActionBar: React.FC<ActionBarProps> = ({
         display: "flex",
         flexDirection: "row", // Ensures buttons are displayed side by side
         width: "100%",
+        height:"60px",
+        spacing:"2",
         justifyContent: justifyContent,
         alignItems: alignItems,
         padding: "10px",
