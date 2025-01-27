@@ -107,6 +107,7 @@ export const Layout = ({
       {...rest}
       sx={{
         backgroundColor: rest.backGroundColor || backgroundColor,
+        color: textColor || 'black',
         backgroundImage: rest.backgroundImage ? `url(${rest.backgroundImage})` : undefined,
         
         border: rest.showBorder ? "1px solid red" : undefined,

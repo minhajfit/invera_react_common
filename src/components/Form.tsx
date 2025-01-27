@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, TextField as MUITextField, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 //import Grid from '@mui/material/Grid2';
 
 interface FormProps {
@@ -28,25 +28,25 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({
-  id,
-  styleName,
-  width = "100%",
-  height = "auto",
-  padding = 2,
+  //id,
+ // styleName,
+  //width = "100%",
+  //height = "auto",
+  //padding = 2,
   numberOfColumns,
-  wrapTitles = true,
-  backGroundColor = "",
-  showBorder = false,
-  autoWidth = false,
-  autoHeight = false,
-  visible = true,
-  autoFocus = false,
-  captionType = "ShortLabel",
-  itemChanged = false,
-  defaultColumnWidthFlag = true,
-  addExtraProperties = false,
-  canBeHidden = false,
-  title,
+  //wrapTitles = true,
+  //backGroundColor = "",
+ // showBorder = false,
+ // autoWidth = false,
+ // autoHeight = false,
+  //visible = true,
+  //autoFocus = false,
+ // captionType = "ShortLabel",
+  //itemChanged = false,
+  //defaultColumnWidthFlag = true,
+  //addExtraProperties = false,
+  //canBeHidden = false,
+  //title,
   children
 }) => {
 

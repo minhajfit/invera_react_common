@@ -1,5 +1,5 @@
 import React from "react";
-import * as Icons from "./fonticon"; // Import all icons from fonticon.tsx as a single object
+import * as Icons from "./FontIcon"; // Import all icons from fonticon.tsx as a single object
 
 interface IconProps {
   iconType: string; // Dynamically map any icon type from fonticon.tsx

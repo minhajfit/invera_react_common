@@ -1,6 +1,6 @@
 import React from "react";
 import { Stack, Button, Typography } from "@mui/material";
-import {Home, Info, Back, LOGO} from "./FontIcon"
+import { Info, Back, LOGO} from "./FontIcon"
 
 
 interface ActionBarProps {

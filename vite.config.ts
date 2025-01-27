@@ -9,8 +9,9 @@ export default defineConfig({
     },
   },
   build: {
+    outDir: 'dist', // Use a different directory for Vite's output
     lib: {
-      entry: './src/index.tsx', // Main entry point
+      entry: 'src/index.tsx', // Main entry point
       name: 'InveraReactCommon',
       fileName: (format) => `invera-react-common.${format}.js`,
     },
