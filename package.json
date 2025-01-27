@@ -3,9 +3,9 @@
   "version": "1.0.1",
   "description": "A custom library for MUI component customization.",
   "type": "module",
-  "main": "dist/invera_react_common.cjs.js",
-  "module": "dist/invera_react_common.esm.js",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/invera_react_common.umd.js",  
+  "module": "dist/invera_react_common.es.js",  
+  "types": "dist/types/index.d.ts",             
   "files": [
     "dist"
   ],
@@ -26,6 +26,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run clean && tsc ",
+    "build:all": "npm run clean && vite build && tsc",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "prettier-write": "prettier --write .",
     "prettier-check": "prettier --check .",
